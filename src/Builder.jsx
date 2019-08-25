@@ -900,9 +900,12 @@ class Builder {
    *   (not just newly added ones) and merge with those reactions
    */
   set_added_reactions (added_reactions, reuseAllExisting=false) {
-    this.settings.get('added_reactions').forEach((reaction) => {
-      reaction.undo()
-    })
+    this.settings.get('added_reactions')
+      .slice()
+      .reverse()
+      .forEach((reaction) => {
+        reaction.undo()
+      })
 
     let newlyAdded = []
     let topLeftOffset = 0
