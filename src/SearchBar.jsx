@@ -147,6 +147,11 @@ class SearchBar extends Component {
   }
 
   close () {
+    // Reset highlights for measured reactions when closing the search bar
+    // in order to set initial styles back
+    const highlight_reaction_ids = this.props.map.settings.get("reaction_highlight")
+    this.props.map.clear_these_highlights()
+    this.props.map.set_these_highlights(highlight_reaction_ids)
     this.props.setDisplay(false)
   }
 
