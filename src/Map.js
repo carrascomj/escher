@@ -2325,6 +2325,8 @@ export default class Map {
 
   highlight (sel) {
     this.sel.selectAll('.highlight')
+      // Skip measured reactions to keep them highlighted during the search
+      .filter(el => !this.settings.get("reaction_highlight").includes(el.bigg_id))
       .classed('highlight', false)
     if (sel !== null) {
       sel.classed('highlight', true)
