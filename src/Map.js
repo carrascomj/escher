@@ -420,6 +420,7 @@ export default class Map {
     this.update_these_reactions_opacity(this.settings.get('reaction_fva_data'))
     this.draw_these_knockouts(this.settings.get('reaction_knockout'))
     this.draw_gene_knockouts(this.settings.get('gene_knockout'))
+    this.draw_gene_highlights(this.settings.get('gene_highlights'))
   }
 
   /** Draw all reactions, and clear deleted reactions.
@@ -559,7 +560,17 @@ export default class Map {
     }
   }
 
-  clear_these_highlights () {
+  draw_gene_highlights (gene_ids) {
+    for (let id of gene_ids) {
+      d3_select_all('#g' + id).classed('gene-highlight', true);
+    }
+  }
+
+  clear_gene_highlights (gene_ids) {
+    d3_select_all('.gene-highlight').classed('gene-highlight', false);
+  }
+
+  clear_highlights () {
     d3_select_all('.highlight').classed('highlight', false);
   }
 

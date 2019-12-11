@@ -162,6 +162,7 @@ class Builder {
       gene_data: null,
       and_method_in_gene_reaction_rule: 'mean',
       gene_knockout: [],
+      gene_highlights: [],
       // metabolite
       metabolite_data: null,
       metabolite_styles: ['color', 'size', 'text'],
@@ -305,6 +306,8 @@ class Builder {
             if (this.settings.get('gene_knockout').length > 0) {
               this.set_knockout_genes(this.settings.get('gene_knockout'))
             }
+            this.set_highlight_genes(this.settings.get('gene_highlights'));
+            this.set_highlight_reactions(this.settings.get('reaction_highlight'));
           }
         }
       }
@@ -984,10 +987,15 @@ class Builder {
     this.map.set_status('')
   }
 
-  set_highlight_reactions (highlight_reaction_ids) {
-    this.map.clear_these_highlights()
-    this.map.set_these_highlights(highlight_reaction_ids)
+  set_highlight_genes (gene_ids) {
+    this.map.clear_gene_highlights();
+    this.map.draw_gene_highlights(gene_ids);
+    this.settings.set('gene_highlights', gene_ids);
+  }
 
+  set_highlight_reactions (highlight_reaction_ids) {
+    this.map.clear_highlights();
+    this.map.set_these_highlights(highlight_reaction_ids)
     this.settings.set('reaction_highlight', highlight_reaction_ids)
   }
 
@@ -1441,6 +1449,12 @@ class Builder {
         key: 'set_knockout_genes',
         target: this,
         fn: this.set_knockout_genes,
+        ignore_with_input: true
+      },
+      set_highlight_genes: {
+        key: 'set_highlight_genes',
+        target: this,
+        fn: this.set_highlight_genes,
         ignore_with_input: true
       },
       set_reaction_fva_data: {

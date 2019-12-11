@@ -134,3 +134,8 @@ svg.escher-svg .gene-ko-mark {
   text-decoration: line-through;
   fill: red;
 }
+svg.escher-svg .gene-highlight {
+  font-weight: bold;
+  fill: orange;
+  filter: url(#escher-glow-filter);
+}
