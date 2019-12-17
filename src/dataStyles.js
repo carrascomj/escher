@@ -14,9 +14,9 @@ const EXCESS_PARENS = /\(\s*(\S+)\s*\)/g
 const OR = /\s+or\s+/i
 const AND = /\s+and\s+/i
 // find ORs
-const OR_EXPRESSION = /(^|\()(\s*-?[0-9.]+\s+(?:or\s+-?[0-9.]+\s*)+)(\)|$)/ig
+const OR_EXPRESSION = /(^|\()(\s*-?[0-9.]+(?:[eE]-?[0-9]+)?\s+(?:or\s+-?[0-9.]+(?:[eE]-?[0-9]+)?\s*)+)(\)|$)/ig
 // find ANDS, respecting order of operations (and before or)
-const AND_EXPRESSION = /(^|\(|or\s)(\s*-?[0-9.]+\s+(?:and\s+-?[0-9.]+\s*)+)(\sor|\)|$)/ig
+const AND_EXPRESSION = /(^|\(|or\s)(\s*-?[0-9.]+(?:[eE]-?[0-9]+)?\s+(?:and\s+-?[0-9.]+(?:[eE]-?[0-9]+)?\s*)+)(\sor|\)|$)/ig
 
 function parseFloatOrNull (x) {
   // strict number casting
