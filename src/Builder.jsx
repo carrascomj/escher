@@ -187,8 +187,7 @@ class Builder {
       reaction_scale_preset: null,
       metabolite_scale_preset: null,
       // Callbacks
-      first_load_callback: null,
-      search_callbacks: null
+      first_load_callback: null
     }, {
       primary_metabolite_radius: true,
       secondary_metabolite_radius: true,
@@ -756,8 +755,7 @@ class Builder {
     this.passPropsSearchBar({
       display: false,
       searchIndex: this.map.search_index,
-      map: this.map,
-      search_callbacks: this.settings.get('search_callbacks')
+      map: this.map
     })
   }
 

@@ -79,17 +79,12 @@ class SearchBar extends Component {
         throw new Error('Bad search index data type: ' + r.type)
       }
     }
-    this.props.search_callbacks.search({
-      searchItem: value,
-      results,
-    });
     this.setState({
       searchItem: value,
       current: 0,
       counter,
       results
-    });
-
+    })
   }
 
   dropDuplicates (results) {
