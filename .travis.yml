@@ -27,4 +27,5 @@ deploy:
   on:
     tags: true
     repo: DD-DeCaF/escher
+  edge: true
   skip_cleanup: true
