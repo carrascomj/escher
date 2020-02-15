@@ -21,9 +21,10 @@ notifications:
 
 deploy:
   provider: npm
-  email: ali@kvikshaug.no
+  # TODO: Update deployment credentials
+  email: ""
   api_key:
-    secure: "w7XCtnuzsfPz42yc2/UrImnJWjYme1dyd0pDgNrIAGMsGC2drN55HB6LKivWYNzfEJg2wmFyH+c1dMKcPAxQpBXRqgUMK0otg1eV0p9g4BLk4ExX51PijThLpW7a8CLP7Cw7/m2AR9b2MbciNE6Gyr7wpXlibtIRD2qSd68WlJJry84pJoVu+j2FOa9Ysi0CnnMd9zKhYGaeu4lZE5zCYN246bXcsQ0BqRaMxuWZsZoKFfHCQZ6tFH0YyhjldWmbRFEzPlz5lwDtwkMM/0PRbb5MYEXW5ye8/vJZL73Ls7UJVd1S10mo5c/zZt75MwRb6RQ1lvAqCH7VAeczSO22C/wiqIR/YyCclzdjtCG+VV5JPoo1CWihOm7fvcbVi2K/O+3GLcmWJH2RmJiZGAY7wlmMuOrfjQXOeD++Un5/OlJYm0u/iGOjg60JhYOAPOGN4K5LQn6S0SsLK7DyJF+rCFgGK0KMa6qFMbilcO8ArXEX3we0Xsx/ifnt3oOeqKQMYxsWq5JkpJVbRijTKosnU+54ddDCHzwSRYGh11su/U/p1uq7Ra9m/uGdHVXgoC1p769ojvgRjBErWu6/fah/1rNEP4H6ZpSiQgCieiB8EAEKbCQF7AMEU4wfrDD5YBNM/ZQBQUmCeqRWtgDX9zGoXpqkD5MORslVcPb663NFShk="
+    secure: ""
   on:
     tags: true
     repo: DD-DeCaF/escher
