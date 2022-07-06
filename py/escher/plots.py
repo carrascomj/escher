@@ -1,4 +1,4 @@
-from escher.urls import get_url, root_directory
+from escher.urls import get_url
 from escher.util import b64dump
 from escher.version import __version__
 
@@ -7,21 +7,14 @@ from cobra import Model
 import pandas as pd
 import ipywidgets as widgets
 from traitlets import Unicode, Int, Instance, Any, observe, validate
-import os
-from os.path import join, isfile, expanduser
+from os.path import isfile, expanduser
 from warnings import warn
 from urllib.request import urlopen
 from urllib.error import URLError
 from urllib.parse import quote as url_escape
 import json
-import shutil
-import re
-from jinja2 import Environment, PackageLoader, Template
-import codecs
-import random
-import string
-import shutil
 from typing import Optional
+from jinja2 import Environment, PackageLoader
 
 # set up jinja2 template location
 env = Environment(loader=PackageLoader('escher', 'templates'))
@@ -62,7 +55,7 @@ def _json_for_name(name: str, kind: str):
                 if obj[kind + '_name'] == name]
 
     try:
-        index = server_index()
+        _ = server_index()
     except URLError:
         raise Exception('Could not connect to the Escher server')
     match = match_in_index(name, server_index(), kind)
@@ -140,7 +133,6 @@ def _load_resource(resource, name):
                          % name)
     else:
         return resource
-    raise Exception('Could not load %s.' % name)
 
 
 def convert_data(data):
@@ -520,11 +512,11 @@ class Builder(widgets.DOMWidget):
 
     def __init__(
             self,
-            map_name: str = None,
-            map_json: str = None,
-            model: Model = None,
-            model_name: str = None,
-            model_json: str = None,
+            map_name: Optional[str] = None,
+            map_json: Optional[str] = None,
+            model: Optional[Model] = None,
+            model_name: Optional[str] = None,
+            model_json: Optional[str] = None,
             **kwargs,
     ) -> None:
         # kwargs will instantiate the traitlets
